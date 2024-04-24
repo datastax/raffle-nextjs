@@ -48,7 +48,7 @@ export default function Home() {
 
       <div>
       { submitted ?
-      <div>Thank for entering our raffle, and GOOD LUCK! 🤗</div>
+      <div>Thanks for entering our raffle, and GOOD LUCK! 🤗</div>
       :
       <form action={enterRaffle} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
