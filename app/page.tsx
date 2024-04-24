@@ -29,7 +29,7 @@ export default function Home() {
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://datastax.com"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -48,7 +48,7 @@ export default function Home() {
 
       <div>
       { submitted ?
-      <div>Thanks for entering our raffle, and GOOD LUCK! 🤗</div>
+      <div>Thanks for entering our raffle, and GOOD LUCK! 🍀</div>
       :
       <form action={enterRaffle} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
