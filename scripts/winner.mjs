@@ -4,7 +4,7 @@ import 'dotenv/config'
 async function run(word) {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
     const embedding = await openai.embeddings.create({
-      model: "text-embedding-3-small",
+      model: "text-embedding-ada-002",
       input: word,
       encoding_format: "float",
     });
