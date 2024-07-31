@@ -8,7 +8,8 @@ export async function POST(req: Request) {
     const doc = {
       _id: email,
       name,
-      email
+      email,
+      created_at: new Date().toISOString()
     }
  
     const db = new DataAPIClient(process.env.ASTRA_DB_APPLICATION_TOKEN!).db(process.env.ASTRA_DB_API_ENDPOINT!)
