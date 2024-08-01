@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         created_at: new Date().toISOString()
       }
    
-      await collection.findOneAndUpdate({ _id: email }, { $set: doc }, { upsert: true })
+      await collection.findOneAndUpdate({ _id: email }, { $set: doc }, { upsert: true, returnDocument: "after" })
       return NextResponse.json({ message: "OK" }, { status: 200 })
     }
     else {
