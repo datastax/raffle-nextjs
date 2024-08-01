@@ -4,9 +4,8 @@ import Image from "next/image";
 import { useState } from "react"
 
 export default function Home() {
-  const [submitted, setSubmitted] = useState(false)
+  const [response, setResponse] = useState(undefined)
   async function enterRaffle(formData: FormData) {
-    setSubmitted(true)
     // submitting the form data to our API
     const name = formData.get("name")
     const email = formData.get("email")
@@ -17,7 +16,9 @@ export default function Home() {
       },
       body: JSON.stringify({ name, email })
     })
-    console.log(res)
+    const json = await res.json()
+    //console.log(json)
+    setResponse(json.message)
   }
 
   return (
@@ -47,7 +48,9 @@ export default function Home() {
       </div>
 
       <div className="w-full lg:w-1/2">
-      { submitted ?
+      { response === "denied" ? 
+      <div><img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzBwb3oxMGFzcjlxN2E0MWpjZTRrdXJhZDlmcGFsZ2RmYncyOGYyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0IyhdVAFdKe5WuQM/giphy.gif" alt="denied"/></div> : ( 
+          response === "OK" ?
       <div><img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHh4enp6d3BlanF2emp0d3Y1Z2Vzc2RsdnFwM3QxcG0wbXFyYTgyNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oeSAz6FqXCKuNFX6o/giphy.gif" alt="good luck"/>
       </div>
       :
@@ -62,7 +65,7 @@ export default function Home() {
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Enter Raffle</button>
         </div>
         </form>
-      }
+      )}
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
