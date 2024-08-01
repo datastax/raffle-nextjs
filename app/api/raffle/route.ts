@@ -12,6 +12,7 @@ export async function POST(req: Request) {
       const doc = {
         name,
         email,
+        $vectorize: name + email,
         created_at: new Date().toISOString()
       }
    
