@@ -59,6 +59,9 @@ export default function Home() {
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="full name" minLength={6} required></input><br></br>
         </div>
         <div className="mb-4">
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="company" placeholder="company" minLength={6} required></input><br></br>
+        </div>
+        <div className="mb-4">
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="email address" required></input><br></br>
         </div>     
         <div className="mb-4">    
