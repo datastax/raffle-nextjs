@@ -9,6 +9,7 @@ export default function Home() {
     // submitting the form data to our API
     const name = formData.get("name")
     const email = formData.get("email")
+    const company = formData.get("company")
     const res = await fetch("api/raffle", { 
       method: "POST",
       headers: {
