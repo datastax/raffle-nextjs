@@ -15,10 +15,9 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email })
+      body: JSON.stringify({ name, email, company })
     })
     const json = await res.json()
-    //console.log(json)
     setResponse(json.message)
   }
 
