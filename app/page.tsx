@@ -9,14 +9,13 @@ export default function Home() {
     // submitting the form data to our API
     const name = formData.get("name")
     const email = formData.get("email")
-    const job_title = formData.get("job_title")
     const company = formData.get("company")
     const res = await fetch("api/raffle", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, job_title, company })
+      body: JSON.stringify({ name, email, company })
     })
     const json = await res.json()
     setResponse(json.message)
@@ -35,10 +34,11 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{""}
+            By{" "}
             <Image
-              src="/langflow-logo-color-white-transparent.png"
-              alt="Langflow Logo"
+              src="/datastax.png"
+              alt="DataStax Logo"
+              className="dark:invert"
               width={200}
               height={48}
               priority
@@ -60,9 +60,6 @@ export default function Home() {
         </div>
         <div className="mb-4">
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="company" placeholder="company" minLength={2} required></input><br></br>
-        </div>
-        <div className="mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="job_title" placeholder="job title" minLength={3} required></input><br></br>
         </div>
         <div className="mb-4">
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="email address" required></input><br></br>

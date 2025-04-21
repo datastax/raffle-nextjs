@@ -25,8 +25,8 @@ async function run({command, arg}) {
             break;
         case "dump":
             resp = await collection.find({}).toArray()
-            console.log('name,email,company, job_title')
-            console.log(resp.map(p => `${p.name},${p.email},${p.company},${p.job_title}`).join('\n'))
+            console.log('name,email')
+            console.log(resp.map(p => `${p.name},${p.email}`).join('\n'))
             break;
         case "winner":
             const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
