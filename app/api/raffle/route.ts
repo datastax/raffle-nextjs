@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
     const json = await req.json()
-    const { name, email, company } = json
+    const { name, email, job_title, company } = json
     const randomVector = Array.from(Array(1536), () => (Math.random() * 2) - 1)
     const db = new DataAPIClient(process.env.ASTRA_DB_APPLICATION_TOKEN!).db(process.env.ASTRA_DB_API_ENDPOINT!)
     const collection = await db.collection("raffle")
@@ -12,6 +12,7 @@ export async function POST(req: Request) {
       const doc = {
         name,
         email,
+        job_title,
         company,
         $vector: randomVector,
         created_at: new Date().toISOString()
