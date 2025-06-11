@@ -23,3 +23,8 @@ Run `node scripts/admin.mjs start` to create a new raffle
 
 Run `npm run dev` to start your local server. Deploy the app to run it in production.
 
+## Web App
+
+The default behavior of the web app is to collect a user's `name` and `email_address`. 
+
+If you add the query parameter `?ql=true`, it will also capture `company` and `job_title`.
