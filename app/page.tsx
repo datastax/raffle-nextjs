@@ -1,14 +1,28 @@
 "use client"
 import Image from "next/image";
 import { useSearchParams } from 'next/navigation';
-
+import { Suspense } from 'react'
 import { useState } from "react"
+
+function QLFields() {
+  const searchParams = useSearchParams()
+  const ql = searchParams.get('ql')
+  return (<>
+    { ql ? <>
+          <div className="mb-4">
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="company" placeholder="company" minLength={2} required></input><br></br>
+        </div>
+        <div className="mb-4">
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="job_title" placeholder="job title" minLength={3} required></input><br></br>
+        </div></> : <></>}
+        </>
+  )
+}
+
 
 export default function Home() {
   const [response, setResponse] = useState(undefined)
-  const searchParams = useSearchParams()
-  const ql = searchParams.get('ql')
-
+  
   async function enterRaffle(formData: FormData) {
     // submitting the form data to our API
     const name = formData.get("name")
@@ -62,14 +76,9 @@ export default function Home() {
         <div className="mb-4">
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="full name" minLength={6} required></input><br></br>
         </div>
-        
-          { ql ? <>
-          <div className="mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="company" placeholder="company" minLength={2} required></input><br></br>
-        </div>
-        <div className="mb-4">
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="job_title" placeholder="job title" minLength={3} required></input><br></br>
-        </div></> : <></>}
+        <Suspense fallback={<div className="text-center">Loading...</div>}>
+          <QLFields/>
+        </Suspense>
         <div className="mb-4">
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="email address" required></input><br></br>
         </div>     
